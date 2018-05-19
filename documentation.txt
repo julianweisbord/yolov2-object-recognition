@@ -1,0 +1,15 @@
+Create Dataset:
+The first step in this software pipeline is to download a bunch of random images to serve as the background images
+and then a series of time magazine cover images to randomly overlay onto the background images. This could be
+done with a script to scrape images but I decided to use the Fatkun Batch Download Image Chrome extension to make
+the process quicker. The Time magazine covers that I downloaded came from the following google searches: "Time Magazine Cover",
+"Time Magazine", "Old Time Magazine", and "History Time Magazine Covers." The background images came from the following
+Google searches: "Cool Cars", "Outdoor Activities", and "Images."
+Next overlay time magazine to a random position on the background image
+Next draw a box around all Time magazine covers
+
+Train YOLOv2 on Time Magazine Covers:
+The assessment suggested to use Keras or Cafe with darknet but I like tensorflow
+so I chose to use darkflow (https://github.com/thtrieu/darkflow)
+
+Classify and detect location of Time Magazine covers
