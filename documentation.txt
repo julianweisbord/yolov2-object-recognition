@@ -1,3 +1,8 @@
+Installation:
+This repository uses Python 3.5
+git clone this repo
+pip install -r dependencies.txt
+
 Create Dataset:
 The first step in this software pipeline is to download a bunch of random images to serve as the background images
 and then a series of time magazine cover images to randomly overlay onto the background images. This could be
@@ -5,11 +10,36 @@ done with a script to scrape images but I decided to use the Fatkun Batch Downlo
 the process quicker. The Time magazine covers that I downloaded came from the following google searches: "Time Magazine Cover",
 "Time Magazine", "Old Time Magazine", and "History Time Magazine Covers." The background images came from the following
 Google searches: "Cool Cars", "Outdoor Activities", and "Images."
-Next overlay time magazine to a random position on the background image
-Next draw a box around all Time magazine covers
+
+Next, I created the training data set by overlaying the time magazine cover images to a random position on every background image using
+create_dataset.py. Example usage: python3 create_dataset.py <background image folder path> <overlay image folder path>
+
+In order to build an object detector that recognizes time magazine covers, I created box_training_imgs.py
+Usage: python3 box_training_imgs.py this module allows you to draw a box around each Time magazine cover
+in each image of the data set. Once the box's are drawn, the user must press the 'n' key to receive the
+next image. After the location of each Time cover is labeled, the position of the magazine is saved in
+an xml file in the "annotations" folder. This annotation file is later fed to the object detector during training.
 
 Train YOLOv2 on Time Magazine Covers:
-The assessment suggested to use Keras or Cafe with darknet but I like tensorflow
+The assessment suggested to use Keras or Cafe with darknet but I like Tensorflow
 so I chose to use darkflow (https://github.com/thtrieu/darkflow)
 
 Classify and detect location of Time Magazine covers
+Config and Weights:
+I chose to use the Tiny YOLOv2 VOC weights and config files. Tiny YOLOv2 is less accurate but much faster than YOLOv2 because I don't
+have the recommended GPU requirements for the full YOLOv2. Tiny YOLOv2 VOC is trained on the Pascal VOC data set which is a standard detection
+set that uses 20 image classes. According to the YOLO9000 paper (https://arxiv.org/pdf/1612.08242.pdf), in comparison to other data sets like COCO,
+VOC achieves a higher mAP value.
+
+Training:
+Before training, I changed the darkflow-master/labels.txt file to have only the "time_cover" class label, I resized the number of filters in
+the last convolutional layer to be 30, which is just num * (number of classes + 5), and I changed the number of classes in the region layer to
+1.
+For training, I fed the detector the Time magazine annotated image set with gpu processing and 300 epochs. In the end, I noticed that the detector
+stopped improving at around step 1375, epoch 72 with a loss of .3 so I stopped training at this step. You can train the detector by executing:
+flow --model cfg/tiny-yolo-voc-1c.cfg --load bin/yolo_weights/tiny-yolo-voc.weights --train --annotation ../annotations/ --dataset ../time_dataset --gpu 1.0 --epoch 300
+
+Load YOLOv2 to classify new data:
+To demonstrate the detector, I made the video, yolov2_detector.mp4. This video shows how to execute darkflow-master/classify.py which takes
+novel validation data and displays YOLO's prediction and bounding box for any and all Time covers that appear in the photos. An example
+usage for classify.py: python3 classify.py <validation image directory>

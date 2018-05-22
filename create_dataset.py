@@ -7,13 +7,12 @@ import numpy as np
 
 BACKGROUND_WIDTH = 600
 BACKGROUND_HEIGHT = 600
-PADDING = 25
 OVERLAY_WIDTH = 150
 OVERLAY_HEIGHT = 150
 
 def create_dataset(background_images, overlay_images):
-    if not os.path.isdir("./time_dataset"):
-        os.mkdir("./time_dataset")
+    if not os.path.isdir("./train_data"):
+        os.mkdir("./train_data")
     # print("overlay_images: ", overlay_images)
     ovr_images = glob.glob(overlay_images + '/*')
     bkg_images = glob.glob(background_images + '/*')
@@ -38,12 +37,12 @@ def create_dataset(background_images, overlay_images):
         cur_overlay = np.multiply(cur_overlay, 1.0 / 255.0)
         rows, cols, channels = cur_overlay.shape
         # Randomly place the image
-        randx = random.randint(0, BACKGROUND_WIDTH - PADDING - rows)
-        randy = random.randint(0, BACKGROUND_HEIGHT - PADDING - rows)
+        randx = random.randint(0, BACKGROUND_WIDTH - rows)
+        randy = random.randint(0, BACKGROUND_HEIGHT - rows)
         overlay = cv2.addWeighted(bkg_image[randx:randx + rows, randy:randy + cols], 0, cur_overlay, 1, 0)
         bkg_image[randx:randx + rows, randy:randy + cols] = overlay
         final_img = np.multiply(bkg_image, 255.0)
-        cv2.imwrite("./time_dataset/overlay{}.jpg".format(pos), final_img)
+        cv2.imwrite("./train_data/overlay{}.jpg".format(pos), final_img)
 
 def main():
     if len(sys.argv) != 3:
