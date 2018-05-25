@@ -1,0 +1,22 @@
+<annotation>
+  <folder>darkflow-master/validation_images</folder>
+  <filename>val_overlay48.jpg</filename>
+  <segmented>0</segmented>
+  <size>
+    <width>600</width>
+    <height>600</height>
+    <depth>3</depth>
+  </size>
+  <object>
+    <name>time_cover</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>203</xmin>
+      <ymin>154</ymin>
+      <xmax>383</xmax>
+      <ymax>323</ymax>
+    </bndbox>
+  </object>
+</annotation>

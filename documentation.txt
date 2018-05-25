@@ -37,9 +37,13 @@ the last convolutional layer to be 30, which is just num * (number of classes + 
 1.
 For training, I fed the detector the Time magazine annotated image set with gpu processing and 300 epochs. In the end, I noticed that the detector
 stopped improving at around step 1375, epoch 72 with a loss of .3 so I stopped training at this step. You can train the detector by executing:
-flow --model cfg/tiny-yolo-voc-1c.cfg --load bin/yolo_weights/tiny-yolo-voc.weights --train --annotation ../annotations/ --dataset ../time_dataset --gpu 1.0 --epoch 300
+flow --model cfg/tiny-yolo-voc-1c.cfg --load bin/yolo_weights/tiny-yolo-voc.weights --train --annotation ../annotations/ --dataset ../train_data --gpu 1.0 --epoch 300
 
 Load YOLOv2 to classify new data:
-To demonstrate the detector, I made the video, yolov2_detector.mp4. This video shows how to execute darkflow-master/classify.py which takes
+To demonstrate the detector, I made the video, videos/yolov2_detector.mp4. This video shows how to execute darkflow-master/classify.py which takes
 novel validation data and displays YOLO's prediction and bounding box for any and all Time covers that appear in the photos. An example
 usage for classify.py: python3 classify.py <validation image directory>
+
+Supplemental Files:
+
+box_training_imgs.py, create_dataset.py, gen_xml.py, rename.py, and darkflow-master/classify.py
