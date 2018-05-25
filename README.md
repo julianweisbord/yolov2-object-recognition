@@ -12,7 +12,8 @@
 <a href="https://imgflip.com/gif/2atfst"><img src="https://i.imgflip.com/2atfst.gif" title="made at imgflip.com"/></a>
 
 ## Graph of Training mAP (Blue) and Validation mAP (Orange) vs Epoch Number
-  <img src="https://raw.githubusercontent.com/julianweisbord/yolov2-object-recognition/master/imgs/map_epoch.png" width="300" height="250"/>
+  <img src="https://raw.githubusercontent.com/julianweisbord/yolov2-object-recognition/master/imgs/map_epoch.png" width="500" height="375"/>
+Peak Validation mAP is 90.64% at epoch 87
 
 ## Instillation:
 Note: This repository uses Python 3.5
