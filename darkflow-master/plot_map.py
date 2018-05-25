@@ -1,3 +1,12 @@
+'''
+Created on May 23rd, 2018
+author: Julian Weisbord
+sources:
+description: This module takes the training/validation images and annotation files and feeds
+                them to a library that calculates the mAP. The mAP accuracy is then plotted
+                vs the epochs of the object detector.
+'''
+
 import os
 import sys
 import math

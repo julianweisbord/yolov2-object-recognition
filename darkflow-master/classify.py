@@ -1,3 +1,11 @@
+'''
+Created on May 19th, 2018
+author: Julian Weisbord
+sources:
+description: Loads the object detecotr model at a specific step and detect a series of
+                images.
+'''
+
 import os
 import sys
 import cv2

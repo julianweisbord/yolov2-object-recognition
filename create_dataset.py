@@ -1,3 +1,10 @@
+'''
+Created on May 18th, 2018
+author: Julian Weisbord
+sources:
+description: Create a data set by overlaying Time magazine covers onto random images.
+'''
+
 import os
 import sys
 import random

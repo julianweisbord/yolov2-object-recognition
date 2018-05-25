@@ -1,3 +1,11 @@
+'''
+Created on May 19th, 2018
+author: Julian Weisbord
+sources: https://github.com/markjay4k/YOLO-series/blob/master/part6%20-%20draw_box.py
+description: Allows users to draw a bounding box around images. Once a bounding box is
+                drawn, gen_xml generates xml annotation files for each image.
+'''
+
 import os
 import matplotlib.pyplot as plt
 import cv2

@@ -1,3 +1,11 @@
+'''
+Created on May 19th, 2018
+author: Julian Weisbord
+sources: https://github.com/markjay4k/YOLO-series/blob/master/part6%20-%20draw_box.py
+description: Generates an xml annotation file for an image with the object label and the
+                location of the bounding box.
+'''
+
 import os
 import cv2
 from lxml import etree
