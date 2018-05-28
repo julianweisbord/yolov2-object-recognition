@@ -24,4 +24,4 @@ Note: This repository uses Python 3.5
 
 3. Read the README.md in darkflow-master
 
-4. For further instructions and documentation, see documentation.txt
+4. For further instructions and documentation, see documentation.pdf
